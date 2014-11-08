@@ -8,19 +8,19 @@
 	;
 	
 	// Validates search query
-	var validqte == function(query){ //declaring var to validate function 
+	var validates = function(query){ //fixed error with single =
 		
 		// Trim whitespace from start and end of search query
-		while(query.charAt(0) = " "){ //declaring "while" function
+		while(query.charAt(0) === " "){   //Fixed error: single = to triple =
 			query = query.substring(1, query.length); //declaring query to substring
 		};
-		while(query.charAt(query.length-1) === ""){ //declaring "while" function
-			query = query.substring(0, query.length-1); //setting length
-		;
+		while(query.charAt(query.length-1) === "") { //declaring "while" function
+            query = query.substring(0, query.length - 1); //setting length
+        };  //fixed error with curly brace
 		
 		// Check search length, must have 3 characters
 		if(query.length < 3){  //Declaring "if" function
-			alert("Your search query is too small, try again".); //fixed quote and this is an alert that will show
+			alert("Your search query is too small, try again."); //fixed error with closed string quotes
 			
 			// (DO NOT FIX THE LINE DIRECTLY BELOW)
 			searchInput.focus(); //user input result
@@ -31,7 +31,7 @@
 	};
 	
 	// Finds search matches
-	var search = function(query) //declaring var on function
+	var search = function(query){ //Fixed error: By adding closing {
 		
 		// split the user's search query string into an array
 		var queryArray = query.join(" "); //directing var to query array
@@ -40,26 +40,26 @@
 		var results = []; //showing results
 
 		// loop through each index of db array
-		for(var i=0, j=db.length; i<j; i++){ //declaring loop through data base
-		
-			// each db[i] is a single video item, each title ends with a pipe "|"
-			// save a lowercase variable of the video title
-			var dbTitleEnd = db[i].indexOf('|'); declaring var on title end
-			var dbitem = db[i].tolowercase().substring(0, dbTitleEnd); declaring var on data base entry
-			
-			// loop through the user's search query words
-			// save a lowercase variable of the search keyword
-			for(var ii=0, jj=queryArray.length; ii<jj; ii++){ //loop length
-				var qitem = queryArray[ii].tolowercase(); //declaring var query item to lower case
-				
-				// is the keyword anywhere in the video title?
-				// If a match is found, push full db[i] into results array
-				var compare = dbitem.indexOf(qitem); //comparing item to data base
-				if(compare !== -1){ //declaring "if" function 
-					results.push(db[i]); //publish results
-				};
-			;
-		;
+		for(var i=0, j=db.length; i<j; i++) { //declaring loop through data base
+
+            // each db[i] is a single video item, each title ends with a pipe "|"
+            // save a lowercase variable of the video title
+            var dbTitleEnd = db[i].indexOf('|'); //declaring var on title end
+            var dbitem = db[i].tolowercase().substring(0, dbTitleEnd); //declaring var on data base entry
+
+            // loop through the user's search query words
+            // save a lowercase variable of the search keyword
+            for (var ii = 0, jj = queryArray.length; ii < jj; ii++) { //loop length
+                var qitem = queryArray[ii].tolowercase(); //declaring var query item to lower case
+
+                // is the keyword anywhere in the video title?
+                // If a match is found, push full db[i] into results array
+                var compare = dbitem.indexOf(qitem); //comparing item to data base
+                if (compare !== -1) { //declaring "if" function
+                    results.push(db[i]); //publish results
+                };
+            }; //fixed error with curly brace
+        }; //fixed error with curly brace
 		
 		results.sort(); //sorting result function
 		
@@ -108,13 +108,13 @@
 	
 	// The onsubmit event will be reviewed in upcoming Course Material.
 	// THE LINE DIRECTLY BELOW IS CORRECT
-	document.forms[0].onsubmit = function(){ //declaring documents attached
-		var query = searchInput.value; declaring var for query //declaring var for query
-		validqte(query); //validating query
+	document.forms[0].onsubmit = function() { //declaring documents attached
+        var query = searchInput.value;  //declaring var for query
+        validates(query); //validating query
 
         // return false is needed for most events - this will be reviewed in upcoming course material
         // THE LINE DIRECTLY BELOW IS CORRECT
-		return false; // not sure what this is
-	;
+        return false; // not sure what this is
+    }; //fixed error with curly brace
 
 })();
